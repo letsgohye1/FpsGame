@@ -50,21 +50,37 @@ public: //Action
 	UFUNCTION(BlueprintCallable)
 	void Look(float Pitch, float Yaw);
 
+
 	//Sprint
 	void StartSprint();
 	void StopSprint();
 
-	//Crouch
-	void StartCrouch();
-	void StopCrouch();
+
+	//Lean
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character")
+	uint8 bLeftLean : 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character")
+	uint8 bRightLean : 1;
+
+
+	//Lean
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character")
+	uint8 bIronSight : 1=false;
+
+	void StartIronSight();
+	void StopIronSight();
 
 
 public: //IA_Action
+
 	//IA_Sprint
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character")
 	TObjectPtr <UInputAction> IA_Sprint;
 
-	//IA_Crouch
+	//IA_IronSight
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character")
-	TObjectPtr <UInputAction> IA_Crouch;
+	TObjectPtr <UInputAction> IA_IronSight;
+
+
 };

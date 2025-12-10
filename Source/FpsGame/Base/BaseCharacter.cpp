@@ -42,6 +42,7 @@ ABaseCharacter::ABaseCharacter()
 	GetMesh()->SetRelativeLocation(FVector(0, 0, -GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
 	GetMesh()->SetRelativeRotation(FRotator(0,-90.0f,0));
 
+
 }
 
 // Called when the game starts or when spawned
@@ -69,8 +70,13 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 		EIC->BindAction(IA_Sprint, ETriggerEvent::Started, this, &ABaseCharacter::StartSprint);
 		EIC->BindAction(IA_Sprint, ETriggerEvent::Completed, this, &ABaseCharacter::StopSprint);
 
-		EIC->BindAction(IA_Crouch, ETriggerEvent::Started, this, &ABaseCharacter::StartCrouch);
-		EIC->BindAction(IA_Crouch, ETriggerEvent::Completed, this, &ABaseCharacter::StopCrouch);
+		EIC->BindAction(IA_IronSight, ETriggerEvent::Started, this, &ABaseCharacter::StartIronSight);
+		EIC->BindAction(IA_IronSight, ETriggerEvent::Completed, this, &ABaseCharacter::StopIronSight);
+	}
+
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("EnhancedInputComponent cast Fail!"));
 	}
 }
 
@@ -91,23 +97,23 @@ void ABaseCharacter::Look(float Pitch, float Yaw)
 void ABaseCharacter::StartSprint()
 {
 	GetCharacterMovement()->MaxWalkSpeed = 600.0f;
-
 }
+
 
 void ABaseCharacter::StopSprint()
 {
 	GetCharacterMovement()->MaxWalkSpeed = 300.0f;
 }
 
-void ABaseCharacter::StartCrouch()
+void ABaseCharacter::StartIronSight()
 {
-	Crouch();
-
+	bIronSight = true;
+	UE_LOG(LogTemp, Warning, TEXT("StartIronSight"));
 }
 
-void ABaseCharacter::StopCrouch()
+void ABaseCharacter::StopIronSight()
 {
-	UnCrouch();
+	bIronSight = false;
+	UE_LOG(LogTemp, Warning, TEXT("StopIronSight"));
 }
-
 

@@ -28,4 +28,16 @@ public: //ABP 사용 변수
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character")
 	uint8 bIsCrouched : 1;
 
+	
+	//Lean
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character")
+	float CurrentLeanAngle = 0.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character")
+	uint8 bLeftLean : 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character")
+	uint8 bRightLean : 1;
+
+
 };
