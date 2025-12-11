@@ -14,4 +14,11 @@ class FPSGAME_API ATitlePC : public APlayerController
 {
 	GENERATED_BODY()
 	
+
+public:
+	void BeginPlay() override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UMG")
+	TObjectPtr<class UTitleWidget>TitleWidgetObject;
+
 };

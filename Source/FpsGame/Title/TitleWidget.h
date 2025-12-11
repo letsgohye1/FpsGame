@@ -14,4 +14,36 @@ class FPSGAME_API UTitleWidget : public UUserWidget
 {
 	GENERATED_BODY()
 	
+
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widget", meta = (WidgetBind))
+	TObjectPtr<class UButton> StartServerButton;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widget", meta = (WidgetBind))
+	TObjectPtr<class UButton> ConnectButton;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widget", meta = (WidgetBind))
+	TObjectPtr<class UEditableTextBox> UserID;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widget", meta = (WidgetBind))
+	TObjectPtr<class UEditableTextBox> Password;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widget", meta = (WidgetBind))
+	TObjectPtr<class UEditableTextBox> ServerIP;
+
+
+public:
+	virtual void NativeConstruct() override; //BeginPlay같은 함수
+
+	UFUNCTION()
+	void StartServer();
+
+	UFUNCTION()
+	void Connect();
+
+	UFUNCTION()
+	void SaveData();
+
+
 };
